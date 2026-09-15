@@ -12,9 +12,9 @@ app.use(express.json())
 const PORT = process.env.PORT || 3000 ; 
 
 
-// app.get('/',(req,res)()=>{
-
-// })
+app.get('/',(req,res)=>{
+    res.json("This is get route")
+})
 const serverOn = async() => {
     try {
 
