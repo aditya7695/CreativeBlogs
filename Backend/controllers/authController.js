@@ -1,5 +1,5 @@
-import User from "../models/user";
-import bcrypt from "bcrypt"
+import User from "../models/user.js";
+import bcrypt from "bcrypt";
 
 export const register = async(req,res) => {
     try {
@@ -22,6 +22,16 @@ export const register = async(req,res) => {
             })
         }
 
+
+        const hashedPassword = await bcrypt.hash(password,10);
+        
+
+        await User.create({name , email , password : hashedPassword})
+
+        return res.status(201).json({
+            success : true,
+            message :"Your registration is successful"
+        })
         
     } catch (error) {
         return res.status(400).json({
@@ -29,4 +39,8 @@ export const register = async(req,res) => {
             message : error.message
         })
     }
+}
+
+export const login = async(req,res) => {
+
 }
