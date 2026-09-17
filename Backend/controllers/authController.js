@@ -76,15 +76,12 @@ export const login = async (req, res) => {
             });
         }
 
-        // 4. Generate an authentication token (JWT)
-        // Ensure you have a JWT_SECRET defined in your .env file
         const token = jwt.sign(
-            { id: userFromDb._id }, 
+            { id: userFromDb._id , role: userFromDb.role},
             process.env.JWT_SECRET || "your_temporary_secret_key", 
             { expiresIn: "7d" }
         );
 
-        // 5. Send successful response with the token and essential user data
         return res.status(200).json({
             success: true,
             message: "Login successful",
@@ -92,7 +89,8 @@ export const login = async (req, res) => {
             user: {
                 id: userFromDb._id,
                 name: userFromDb.name,
-                email: userFromDb.email
+                email: userFromDb.email,
+                role: userFromDb.role
             }
         });
         
