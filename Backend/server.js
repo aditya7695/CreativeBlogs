@@ -3,6 +3,8 @@ import cors from 'cors';
 import 'dotenv/config';
 import connectDB from './config/db.js';
 import authRoute from '../Backend/routes/authRoute.js'
+import blogRoute from '../Backend/routes/blogRoute.js'
+import commentRoute from '../Backend/routes/commentRoute.js'
 
 
 
@@ -19,6 +21,8 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/api/auth',authRoute);
+app.use('/api/blog',blogRoute);
+app.use('/api/comment',commentRoute);
 
 const serverOn = async() => {
     try {

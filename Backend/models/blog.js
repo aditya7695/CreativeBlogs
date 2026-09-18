@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
 const blogSchema = new mongoose.Schema({
-    Author : {
+    author : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'user',
         required : true
     },
-    Title : {
+    title : {
         type : String,
         required : [true,"Title is required"],
     },
-    Description : {
+    description : {
         type : String,
         required : true
     },
