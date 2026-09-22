@@ -9,6 +9,7 @@ const blogSchema = new mongoose.Schema({
     title : {
         type : String,
         required : [true,"Title is required"],
+        unique : [true,"Blog title is already exist"]
     },
     description : {
         type : String,

@@ -5,6 +5,8 @@ import connectDB from './config/db.js';
 import authRoute from '../Backend/routes/authRoute.js'
 import blogRoute from '../Backend/routes/blogRoute.js'
 import commentRoute from '../Backend/routes/commentRoute.js'
+import { myCustomMiddelware } from './middelwares/authMiddelware.js';
+
 
 
 
@@ -21,8 +23,8 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/api/auth',authRoute);
-app.use('/api/blog',blogRoute);
-app.use('/api/comment',commentRoute);
+app.use('/api/blog',myCustomMiddelware, blogRoute);
+app.use('/api/comment',myCustomMiddelware, commentRoute);
 
 const serverOn = async() => {
     try {
